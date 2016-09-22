@@ -22,20 +22,20 @@ class ModelTests: XCTestCase, GameModelProtocol {
   }
 
   // Would be better to just make the merge and associated methods static.
-  func scoreChanged(score: Int) { }
-  func moveOneTile(from: (Int, Int), to: (Int, Int), value: Int) { }
-  func moveTwoTiles(from: ((Int, Int), (Int, Int)), to: (Int, Int), value: Int) { }
-  func insertTile(location: (Int, Int), value: Int) { }
+  func scoreChanged(_ score: Int) { }
+  func moveOneTile(_ from: (Int, Int), to: (Int, Int), value: Int) { }
+  func moveTwoTiles(_ from: ((Int, Int), (Int, Int)), to: (Int, Int), value: Int) { }
+  func insertTile(_ location: (Int, Int), value: Int) { }
 
   // --------- TEST CONDENSE --------- //
 
   func testCondense1() {
     let m = GameModel(dimension: 5, threshold: 2048, delegate: self)
-    var group = [TileObject.Tile(1),
-      TileObject.Tile(2),
-      TileObject.Tile(4),
-      TileObject.Tile(8),
-      TileObject.Tile(1)]
+    var group = [TileObject.tile(1),
+      TileObject.tile(2),
+      TileObject.tile(4),
+      TileObject.tile(8),
+      TileObject.tile(1)]
     XCTAssert(group.count == 5, "Group should have 5 members before anything happens")
     let output = m.condense(group)
 
